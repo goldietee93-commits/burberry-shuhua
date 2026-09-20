@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Burberry × Shuhua — ready-to-post comments</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    --bg: #2a3fdb;
+    --line-light: rgba(255, 255, 255, 0.07);
+    --line-dark: rgba(0, 0, 60, 0.14);
+    --ink: #f7f4ee;
+    --ink-soft: rgba(247, 244, 238, 0.7);
+    --btn-bg: #f7f4ee;
+    --btn-ink: #1b2bb0;
+    --focus: #ffd76a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1b2896;
+      --line-light: rgba(255, 255, 255, 0.05);
+      --line-dark: rgba(0, 0, 30, 0.22);
+      --btn-ink: #16227f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1b2896;
+    --line-light: rgba(255, 255, 255, 0.05);
+    --line-dark: rgba(0, 0, 30, 0.22);
+    --btn-ink: #16227f;
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { height: 100%; scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    margin: 0;
+    min-height: 100%;
+    background-color: var(--bg);
+    /* Burberry-check nod: a faint plaid drawn with two crossing stripe sets */
+    background-image:
+      repeating-linear-gradient(90deg, transparent 0 56px, var(--line-light) 56px 84px, transparent 84px 140px, var(--line-dark) 140px 148px),
+      repeating-linear-gradient(0deg, transparent 0 56px, var(--line-light) 56px 84px, transparent 84px 140px, var(--line-dark) 140px 148px);
+    color: var(--ink);
+    font-family: "Newsreader", Georgia, "Times New Roman", serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  main {
+    width: 100%;
+    max-width: 36rem;
+    padding: 2.25rem 1.5rem 2.5rem;
+  }
+  .site {
+    margin: 0 0 2rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid rgba(247, 244, 238, 0.35);
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+  }
+  h1 {
+    margin: 0;
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.6rem, 12vw, 4.4rem);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+  }
+  .sub {
+    margin: 0.9rem 0 0;
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--ink-soft);
+  }
+  .stage { margin: 2.5rem 0 1.75rem; min-height: 12rem; }
+  .mark {
+    display: block;
+    font-size: 4.5rem;
+    line-height: 0.6;
+    height: 2rem;
+    color: var(--ink-soft);
+    user-select: none;
+  }
+  #comment {
+    margin: 0;
+    font-size: clamp(1.5rem, 6.2vw, 2.15rem);
+    line-height: 1.38;
+    font-weight: 400;
+    overflow-wrap: anywhere;
+  }
+  #comment.empty { color: var(--ink-soft); font-style: italic; }
+  @media (prefers-reduced-motion: no-preference) {
+    #comment.in { animation: rise 0.3s ease-out; }
+    @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  }
+  .count {
+    margin: 1.1rem 0 0;
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  button {
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: -0.005em;
+    min-height: 3rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0;
+    border: 1.5px solid var(--btn-bg);
+    cursor: pointer;
+  }
+  button:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+  .primary { background: var(--btn-bg); color: var(--btn-ink); flex: 1 1 12rem; }
+  .secondary { background: transparent; color: var(--ink); flex: 0 1 auto; }
+  button:disabled { opacity: 0.45; cursor: not-allowed; }
+  .reset {
+    margin-top: 1.25rem;
+    padding: 0.5rem 0;
+    min-height: 2.75rem;
+    border: 0;
+    background: none;
+    color: var(--ink);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+</style>
+</head>
+<body>
+<main>
+  <p class="site">www shuhua</p>
+  <h1>Burberry<br>× Shuhua</h1>
+  <p class="sub">Ready-to-post comments for London Fashion Week.</p>
+
+  <section class="stage">
+    <span class="mark" aria-hidden="true">“</span>
+    <p id="comment" class="empty" role="status" aria-live="polite">Click Generate comment. Your first comment will land here.</p>
+    <p class="count" id="count">0 of 150 used</p>
+  </section>
+
+  <div class="actions">
+    <button class="primary" id="gen" type="button">Generate comment</button>
+    <button class="secondary" id="copy" type="button" disabled>Copy</button>
+  </div>
+  <button class="reset" id="reset" type="button">Start a fresh cycle</button>
+</main>
+
+<script>
+  var COMMENTS = [
+    "Shuhua at Burberry during London Fashion Week is exactly the crossover I needed to see.",
+    "The way Shuhua carries Burberry is just effortless. Front row perfection!",
+    "Burberry at London Fashion Week has never looked this good. Shuhua, you are the moment.",
+    "Shuhua x Burberry: elegance, poise and that unmistakable presence.",
+    "Every frame of Shuhua at Burberry belongs in a magazine.",
+    "Not me refreshing all day for more photos of Shuhua at Burberry.",
+    "Trench coat weather and Shuhua in Burberry. Perfect pairing.",
+    "Shuhua understood the assignment. Burberry, London, and pure grace.",
+    "Neverland is so proud watching Shuhua shine at Burberry's London Fashion Week show!",
+    "Quiet luxury has a face and it's Shuhua's. Burberry looks incredible on her.",
+    "Burberry's guest list got so much better with Shuhua on it. Stunning!",
+    "That calm, graceful presence. Shuhua owns every Burberry moment.",
+    "From the front row to the spotlight, Shuhua made Burberry's show her own moment.",
+    "Shuhua's style keeps getting better, and Burberry brings out the best of it.",
+    "Classic British heritage meets Shuhua's timeless charm. Burberry never looked so iconic.",
+    "I need every angle of Shuhua at Burberry, please and thank you!",
+    "Shuhua walking into Burberry like the whole city was waiting for her.",
+    "i-dle must be so proud of Shuhua at Burberry! London Fashion Week looks good on her.",
+    "Shuhua and Burberry: a match made in fashion heaven.",
+    "Camera flashes, London skies, Shuhua in Burberry. Pure cinema.",
+    "Shuhua's visuals are on another level. Thank you, Burberry, for the front-row view.",
+    "Timeless look, timeless face. Shuhua at Burberry is a masterclass in elegance.",
+    "Fashion week season just got better because Shuhua showed up at Burberry.",
+    "Everything about Shuhua's Burberry look says confidence and grace.",
+    "This is the kind of fashion moment that gets framed. Shuhua, London, Burberry.",
+    "Shuhua made Burberry's London Fashion Week feel like a fairytale.",
+    "Soft, sharp and unforgettable. Shuhua at Burberry.",
+    "Burberry checks, London vibes and Shuhua's radiant smile. Ten out of ten.",
+    "Proud, emotional and obsessed. Shuhua at Burberry is everything.",
+    "Shuhua carrying Burberry like she was born for it. Legend.",
+    "Burberry could not have asked for a better guest than Shuhua. Radiant from every angle.",
+    "Shuhua in London for Burberry is the best thing on my timeline.",
+    "The elegance, the calm, the smile. Shuhua brings something special to Burberry.",
+    "Shuhua at Burberry deserves its own fashion editorial spread.",
+    "Burberry's rainy-London mood plus Shuhua's soft glow is a dream combination.",
+    "Shuhua brought her own kind of star power to Burberry, and we're all here for it.",
+    "Somebody tell Burberry that Shuhua just set the bar for front-row style.",
+    "Shuhua looks like she walked straight out of a Burberry campaign.",
+    "So many gorgeous photos of Shuhua at Burberry. My camera roll is full!",
+    "Shuhua's grace makes every Burberry piece look timeless.",
+    "Shuhua at Burberry is proof that elegance never goes out of style.",
+    "Burberry's classic check has nothing on Shuhua's charm.",
+    "Watching Shuhua at Burberry and forgetting to breathe. Absolutely gorgeous.",
+    "Shuhua makes London Fashion Week look like her personal runway. Burberry, thank you for this.",
+    "The Burberry front row is prettier with Shuhua in it. Simple as that.",
+    "Shuhua in Burberry tones is my new favorite color palette.",
+    "London, Burberry, Shuhua. The holy trinity of my feed.",
+    "Shuhua's poise at Burberry is something designers dream of.",
+    "That Burberry x Shuhua moment is going straight to my saved folder.",
+    "Shuhua looks so composed and radiant at Burberry. Total star quality.",
+    "If elegance had a dress code, it would be Shuhua at Burberry.",
+    "Shuhua brings the softness, Burberry brings the heritage. Beautiful balance.",
+    "Every time I think Shuhua can't look better, Burberry proves me wrong.",
+    "Shuhua's Burberry look is now the standard for effortless chic.",
+    "Genuinely stunned by how good Shuhua looks at Burberry. Where do I even start?",
+    "Shuhua turning London Fashion Week into her own fashion film at Burberry.",
+    "Burberry fans and Shuhua fans are eating well right now.",
+    "The grace, the glow, the Burberry. Shuhua did that.",
+    "Shuhua at Burberry feels like a scene from a movie I never want to end.",
+    "Shuhua's presence at Burberry just made London Fashion Week unforgettable.",
+    "Thank you, Burberry, for giving us this Shuhua moment.",
+    "Shuhua in Burberry is a whole mood. Calm, chic and completely captivating.",
+    "Neverland, we are so lucky to see Shuhua shine at Burberry.",
+    "Shuhua never misses. Burberry, London, elegance. Done.",
+    "Some people just belong in front of a camera at Burberry. Shuhua is one of them.",
+    "Shuhua at Burberry is giving timeless beauty with modern grace.",
+    "I love how Shuhua makes even a simple Burberry look feel special.",
+    "This Shuhua and Burberry pairing deserves a standing ovation.",
+    "Shuhua's smile at Burberry could light up all of London.",
+    "Burberry season is officially Shuhua season.",
+    "The visuals, the poise, the Burberry. Shuhua really showed up and showed out.",
+    "Shuhua takes the Burberry look and turns it into art.",
+    "Cannot get over how effortlessly Shuhua fits into the world of Burberry.",
+    "Shuhua's fashion moments keep getting bigger, and Burberry is a perfect one.",
+    "London is beautiful, but Shuhua at Burberry is on another level.",
+    "Shuhua's Burberry moment is a reminder of why we love her style so much.",
+    "Everyone at the Burberry show, make some room. Shuhua has arrived.",
+    "Shuhua has the kind of elegance Burberry was made for.",
+    "The softest, prettiest Burberry moment goes to Shuhua. No contest.",
+    "Shuhua at Burberry: clean lines, classic charm, zero flaws.",
+    "Every Burberry look is better with Shuhua in it. Fact.",
+    "Shuhua at Burberry is the fashion collab my heart needed.",
+    "My heart cannot handle how beautiful Shuhua looks at Burberry.",
+    "Shuhua is the definition of graceful, and Burberry is the perfect stage for it.",
+    "Shuhua deserves all the flowers for that Burberry appearance.",
+    "That Burberry backdrop, that Shuhua glow. Fashion week perfection.",
+    "Shuhua makes classic British style look brand new at Burberry.",
+    "Please keep the Shuhua at Burberry photos coming. We are not okay.",
+    "Elegant, calm and completely magnetic. Shuhua at Burberry stole the show.",
+    "Shuhua and Burberry together is a moment fashion fans will remember.",
+    "Shuhua at Burberry is the kind of elegance that stops the scroll.",
+    "Burberry looks even better with Shuhua in the frame.",
+    "Shuhua's Burberry appearance is a lesson in quiet confidence.",
+    "I would watch Shuhua walk into Burberry on repeat for hours.",
+    "Shuhua and Burberry are giving me all the fashion inspiration I need.",
+    "The most beautiful part of London Fashion Week? Shuhua at Burberry, easily.",
+    "Shuhua radiates calm luxury, and Burberry is the perfect backdrop for it.",
+    "Every detail of Shuhua's Burberry look feels intentional and elegant.",
+    "Shuhua at Burberry is fashion week magic.",
+    "Shuhua brings such warmth to a classic Burberry moment.",
+    "Burberry set the scene and Shuhua stole it.",
+    "Shuhua and Burberry, a love story written in trench coats.",
+    "i-dle fans, we are so proud of Shuhua at Burberry!",
+    "Shuhua is redefining what front-row elegance looks like at Burberry.",
+    "It's the poise for me. Shuhua at Burberry is impeccable.",
+    "Shuhua at Burberry, and suddenly London feels like the center of the fashion world.",
+    "Let's all take a moment to appreciate Shuhua at Burberry. Flawless.",
+    "Shuhua's grace paired with Burberry's heritage is a dream come true.",
+    "The internet needs more photos of Shuhua at Burberry, immediately.",
+    "Shuhua looks incredible in every single frame of Burberry's show.",
+    "Shuhua at Burberry is my comfort scroll now.",
+    "Style, grace and star power. Shuhua at Burberry has it all.",
+    "Shuhua walked into Burberry and the fashion world took notice.",
+    "Burberry's atmosphere suits Shuhua so perfectly. Elegant from head to toe.",
+    "There is nobody like Shuhua at Burberry. Pure class.",
+    "Shuhua brings that gentle glow that makes every Burberry moment shine.",
+    "Shuhua, London and Burberry: the fashion week trio I never knew I needed.",
+    "I'm not crying, you're crying. Shuhua at Burberry is just that beautiful.",
+    "Shuhua's Burberry appearance sets the tone for the whole fashion season.",
+    "Absolutely mesmerized by Shuhua at Burberry. Take my whole feed.",
+    "Shuhua makes it look so easy to be this elegant at Burberry.",
+    "The way the cameras follow Shuhua at Burberry says it all.",
+    "Shuhua is the fashion moment. Burberry is the setting. Perfection.",
+    "Shuhua wearing that calm confidence at Burberry is everything.",
+    "Shuhua at Burberry belongs on every mood board this season.",
+    "Sending love to Shuhua for representing so gracefully at Burberry.",
+    "Shuhua's Burberry moment is soft power at its finest.",
+    "Fashion, London, and Shuhua's radiant smile at Burberry. What a combination.",
+    "Shuhua really brought the elegance to Burberry. We're all still recovering.",
+    "Everything about Shuhua at Burberry feels effortless and refined.",
+    "Just when we thought London Fashion Week couldn't get better, Shuhua showed up at Burberry.",
+    "Shuhua's Burberry photos are the definition of picture perfect.",
+    "Someone frame this Shuhua at Burberry moment, please.",
+    "Shuhua carries herself with such grace at Burberry. So proud of her.",
+    "Burberry, meet Shuhua. London, meet your new favorite front-row star.",
+    "Shuhua's presence at Burberry is a gift to everyone who loves elegant style.",
+    "Shuhua at Burberry, and I'm officially speechless.",
+    "This Shuhua x Burberry moment is elegance in motion.",
+    "Shuhua shining at Burberry makes every fan proud.",
+    "Watching Shuhua at Burberry feels like watching a fashion dream come true.",
+    "Shuhua doesn't just attend Burberry, she elevates it.",
+    "Shuhua's Burberry look is calm, classic and completely unforgettable.",
+    "i-dle's Shuhua at Burberry is exactly the fashion content I signed up for.",
+    "Shuhua at Burberry is the best kind of London story.",
+    "What a moment for Shuhua at Burberry. So deserved, so beautiful.",
+    "Shuhua and Burberry are a reminder that true style is about grace.",
+    "Shuhua at Burberry: soft power, sharp style, endless charm.",
+    "I keep replaying Shuhua at Burberry in my head. Absolutely lovely.",
+    "Shuhua brings grace to Burberry and magic to London Fashion Week.",
+    "Thank you, Shuhua, for making Burberry and London Fashion Week feel this special."
+  ];
+
+  var pool = COMMENTS.slice();
+  var current = null;
+  var $comment = document.getElementById("comment");
+  var $count = document.getElementById("count");
+  var $gen = document.getElementById("gen");
+  var $copy = document.getElementById("copy");
+  var $reset = document.getElementById("reset");
+  var copyTimer = null;
+
+  function used() { return COMMENTS.length - pool.length; }
+
+  function refresh() {
+    $count.textContent = used() + " of " + COMMENTS.length + " used";
+    $gen.disabled = pool.length === 0;
+    $copy.disabled = current === null;
+    if (pool.length === 0 && current !== null) {
+      $count.textContent = "All " + COMMENTS.length + " used. Start a fresh cycle for more.";
+    }
+  }
+
+  function generate() {
+    if (!pool.length) return;
+    var i = Math.floor(Math.random() * pool.length);
+    current = pool.splice(i, 1)[0];
+    $comment.textContent = current;
+    $comment.classList.remove("empty", "in");
+    void $comment.offsetWidth;
+    $comment.classList.add("in");
+    resetCopyLabel();
+    refresh();
+  }
+
+  function resetCopyLabel() {
+    clearTimeout(copyTimer);
+    $copy.textContent = "Copy";
+  }
+
+  function fallbackCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) {}
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  function copy() {
+    if (current === null) return;
+    var done = function (ok) {
+      $copy.textContent = ok ? "Copied" : "Press and hold to copy";
+      clearTimeout(copyTimer);
+      copyTimer = setTimeout(resetCopyLabel, 1800);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(current).then(function () { done(true); }, function () { done(fallbackCopy(current)); });
+    } else {
+      done(fallbackCopy(current));
+    }
+  }
+
+  function freshCycle() {
+    pool = COMMENTS.slice();
+    current = null;
+    $comment.textContent = "Click Generate comment. Your first comment will land here.";
+    $comment.classList.add("empty");
+    $comment.classList.remove("in");
+    resetCopyLabel();
+    refresh();
+  }
+
+  $gen.addEventListener("click", generate);
+  $copy.addEventListener("click", copy);
+  $reset.addEventListener("click", freshCycle);
+  refresh();
+</script>
+</body>
+</html>
