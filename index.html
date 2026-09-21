@@ -142,16 +142,16 @@
 <main>
   <p class="site">www shuhua</p>
   <h1>Burberry<br>× Shuhua</h1>
-  <p class="sub">Ready-to-post comments for London Fashion Week.</p>
+  <p class="sub">Ready-to-post for London Fashion Week.</p>
 
   <section class="stage">
     <span class="mark" aria-hidden="true">“</span>
-    <p id="comment" class="empty" role="status" aria-live="polite">Click Generate comment. Your first comment will land here.</p>
+    <p id="comment" class="empty" role="status" aria-live="polite">Ready to start? Tap 'Generate' to see your first caption here!</p>
     <p class="count" id="count">0 of 150 used</p>
   </section>
 
   <div class="actions">
-    <button class="primary" id="gen" type="button">Generate comment</button>
+    <button class="primary" id="gen" type="button">Generate</button>
     <button class="secondary" id="copy" type="button" disabled>Copy</button>
   </div>
   <button class="reset" id="reset" type="button">Start a fresh cycle</button>
@@ -379,7 +379,7 @@
   function freshCycle() {
     pool = COMMENTS.slice();
     current = null;
-    $comment.textContent = "Click Generate comment. Your first comment will land here.";
+    $comment.textContent = "Ready to start? Tap 'Generate' to see your first caption here!";
     $comment.classList.add("empty");
     $comment.classList.remove("in");
     resetCopyLabel();
